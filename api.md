@@ -1,5 +1,7 @@
 # API
 
+[[_TOC_]]
+
 ## Languages
 
 Docverter has an [official Ruby Gem](http://rubygems.org/gems/docverter) ([Github](https://github.com/docverter/docverter-ruby)). The API described here can of course be used by any language that can make HTTP requests.
