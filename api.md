@@ -666,10 +666,4 @@ from surrounding text by blank lines.
 If the code itself contains a row of tildes or backticks, just use a longer
 row of tildes or backticks at the start and end:
 
-    ~~~~~~~~~~~~~~~~
-    ~~~~~~~~~~
-    code including tildes
-    ~~~~~~~~~~
-    ~~~~~~~~~~~~~~~~
-
 
