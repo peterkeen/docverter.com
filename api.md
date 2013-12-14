@@ -644,6 +644,17 @@ of the verbatim text, and is removed in the output.
 
 Note: blank lines in the verbatim text need not begin with four spaces.
 
+*Docverter extension*.
 
+In addition to standard indented code blocks, Docverter supports
+*delimited* code blocks.  These begin with a row of three or more
+tildes (`~`) or backticks (`` ` ``) and end with a row of tildes or
+backticks that must be at least as long as the starting row. Everything
+between these lines is treated as code. No indentation is necessary:
 
+    ~~~~~~~
+    if (a > 3) {
+      moveShip(5 * gravity, DOWN);
+    }
+    ~~~~~~~
 
