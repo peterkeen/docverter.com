@@ -15,8 +15,8 @@
     <link rel="shortcut icon" type="image/png" href="/favicon.png" />
     <link rel="icon" type="image/png" href="/favicon.png" />
 
-    <script src="/highlight.pack.js" type="text/javascript"></script>
-    <link rel="stylesheet" href="/github.css">
+    <script src="<%= static_path '/highlight.pack.js' %>" type="text/javascript"></script>
+    <link rel="stylesheet" href="<%= static_path '/github.css' %>">
 
     <script type="text/javascript">
     
