@@ -1,12 +1,9 @@
-asdfasdfsadf
 
-Languages
-=========
+## Languages
 
 Docverter has an [official Ruby Gem](http://rubygems.org/gems/docverter) ([Github](https://github.com/docverter/docverter-ruby)). The API described here can of course be used by any language that can make HTTP requests.
 
-Conversions
-===========
+## Conversions
 
 The API has one endpoint:
 
@@ -64,8 +61,7 @@ Specify output format.  *FORMAT* can be `markdown` (markdown), `rst` (reStructur
 `docbook` (DocBook XML), `docx` (Word docx), `epub` (EPUB book),
 `mobi` (Kindle book), `asciidoc` (AsciiDoc),  or `rtf` (rich text format).
 
-Reader options
---------------
+### Reader options
 
 **`strict`**
 
@@ -111,8 +107,7 @@ Preserve tabs instead of converting them to spaces (the default).
 
 Specify the number of spaces per tab (default is 4).
 
-General writer options
-----------------------
+### General writer options
 
 **`template`** *FILE*
 
@@ -176,8 +171,7 @@ docverter automatically sets the variables used in the default
 templates.  If no *VAL* is specified, the key will be given the
 value `true`.
 
-Options affecting specific writers
-----------------------------------
+### Options affecting specific writers
 
 **`ascii`**
 
@@ -331,8 +325,7 @@ will need to add declarations like the following to your CSS (see
 
 This file must be included using `other_files[]`.
 
-Templates
-=========
+## Templates
 
 Docverter  uses a template to
 add header and footer material that is needed for a self-standing
@@ -460,8 +453,7 @@ is to fork the pandoc-templates repository
 (<http://github.com/jgm/pandoc-templates>) and merge in changes after each
 pandoc release.
 
-Docverter's markdown
-====================
+## Docverter's markdown
 
 Docverter understands an extended and slightly revised version of
 John Gruber's [markdown][] syntax.  This document explains the syntax,
@@ -469,8 +461,7 @@ noting differences from standard markdown. Except where noted, these
 differences can be suppressed by specifying the `--strict` command-line
 option.
 
-Philosophy
-----------
+### Philosophy
 
 Markdown is designed to be easy to write, and, even more importantly,
 easy to read:
@@ -491,20 +482,18 @@ it discourages it, and provides other, non-HTMLish ways of representing
 important document elements like definition lists, tables, mathematics, and
 footnotes.
 
-Paragraphs
-----------
+### Paragraphs
 
 A paragraph is one or more lines of text followed by one or more blank line.
 Newlines are treated as spaces, so you can reflow your paragraphs as you like.
 If you need a hard line break, put two or more spaces at the end of a line,
 or type a backslash followed by a newline.
 
-Headers
--------
+### Headers
 
 There are two kinds of headers, Setext and atx.
 
-### Setext-style headers ###
+#### Setext-style headers ###
 
 A setext-style header is a line of text "underlined" with a row of `=` signs
 (for a level one header) of `-` signs (for a level two header):
@@ -519,7 +508,7 @@ The header text can contain inline formatting, such as emphasis (see
 [Inline formatting](#inline-formatting), below).
 
 
-### Atx-style headers ###
+#### Atx-style headers ###
 
 An Atx-style header consists of one to six `#` signs and a line of
 text, optionally followed by any number of `#` signs.  The number of
@@ -543,7 +532,7 @@ wrapping). Consider, for example:
     #22, for example, and #5.
 
 
-### Header identifiers in HTML, LaTeX, and ConTeXt ###
+#### Header identifiers in HTML, LaTeX, and ConTeXt ###
 
 *Docverter extension*.
 
@@ -594,8 +583,7 @@ sections to be manipulated using javascript or treated differently in
 CSS.
 
 
-Block quotations
-----------------
+### Block quotations
 
 Markdown uses email conventions for quoting blocks of text.
 A block quotation is one or more paragraphs or other block elements
@@ -636,10 +624,9 @@ a nested block quote in docverter:
     >> Nested.
 
 
-Verbatim (code) blocks
-----------------------
+### Verbatim (code) blocks
 
-### Indented code blocks ###
+#### Indented code blocks ###
 
 A block of text indented four spaces (or one tab) is treated as verbatim
 text: that is, special characters do not trigger special formatting,
@@ -655,7 +642,7 @@ of the verbatim text, and is removed in the output.
 Note: blank lines in the verbatim text need not begin with four spaces.
 
 
-### Delimited code blocks ###
+#### Delimited code blocks ###
 
 *Docverter extension*.
 
@@ -722,10 +709,9 @@ This is equivalent to:
 To prevent all highlighting, use the `--no-highlight` flag.
 To set the highlighting style, use `--highlight-style`.
 
-Lists
------
+### Lists
 
-### Bullet lists ###
+#### Bullet lists ###
 
 A bullet list is a list of bulleted list items.  A bulleted list
 item begins with a bullet (`*`, `+`, or `-`).  Here is a simple
@@ -761,7 +747,7 @@ But markdown also allows a "lazy" format:
     list item.
     * and my second.
 
-### The four-space rule ###
+#### The four-space rule ###
 
 A list item may contain multiple paragraphs and other block-level
 content. However, subsequent paragraphs must be preceded by a blank line
@@ -819,7 +805,7 @@ docverter interprets it that way.
   [markdown syntax guide]:
     http://daringfireball.net/projects/markdown/syntax#list
 
-### Ordered lists ###
+#### Ordered lists ###
 
 Ordered lists work just like bulleted lists, except that the items
 begin with enumerators rather than bullets.
@@ -875,7 +861,7 @@ If default list markers are desired, use `#.`:
     #.  three
 
 
-### Definition lists ###
+#### Definition lists ###
 
 *Docverter extension*.
 
@@ -918,7 +904,7 @@ definition and the next term:
 [PHP Markdown Extra]: http://www.michelf.com/projects/php-markdown/extra/
 
 
-### Numbered example lists ###
+#### Numbered example lists ###
 
 *Docverter extension*.
 
@@ -946,7 +932,7 @@ The label can be any string of alphanumeric characters, underscores,
 or hyphens.
 
 
-### Compact and loose lists ###
+#### Compact and loose lists ###
 
 Docverter behaves differently from `Markdown.pl` on some "edge
 cases" involving lists.  Consider this source: 
@@ -971,7 +957,7 @@ behavior is consistent with the official markdown syntax description,
 even though it is different from that of `Markdown.pl`.)
 
 
-### Ending a list ###
+#### Ending a list ###
 
 What if you want to put an indented code block after a list?
 
@@ -1008,8 +994,7 @@ of one big list:
     2.  dos
     3.  tres
 
-Horizontal rules
-----------------
+### Horizontal rules
 
 A line containing a row of three or more `*`, `-`, or `_` characters
 (optionally separated by spaces) produces a horizontal rule:
@@ -1019,8 +1004,7 @@ A line containing a row of three or more `*`, `-`, or `_` characters
     ---------------
 
 
-Tables
-------
+### Tables
 
 *Docverter extension*.
 
@@ -1140,8 +1124,7 @@ columns or rows. Grid tables can be created easily using [Emacs table mode].
   [Emacs table mode]: http://table.sourceforge.net/
 
 
-Title block
------------
+### Title block
 
 *Docverter extension*.
 
@@ -1220,8 +1203,7 @@ will also have "Docverter User Manuals" in the footer.
 will also have "Version 4.0" in the header.
 
 
-Backslash escapes
------------------
+### Backslash escapes
 
 Except inside a code block or inline code, any punctuation or space
 character preceded by a backslash will be treated literally, even if it
@@ -1257,8 +1239,7 @@ two trailing spaces on a line.
 
 Backslash escapes do not work in verbatim contexts.
 
-Smart punctuation
------------------
+### Smart punctuation
 
 *Docverter extension*.
 
@@ -1270,10 +1251,9 @@ are inserted after certain abbreviations, such as "Mr."
 Note:  if your LaTeX template uses the `csquotes` package, docverter will
 detect automatically this and use `\enquote{...}` for quoted text.
 
-Inline formatting
------------------
+### Inline formatting
 
-### Emphasis ###
+#### Emphasis ###
 
 To *emphasize* some text, surround it with `*`s or `_`, like this:
 
@@ -1297,7 +1277,7 @@ just part of a word, use `*`:
     feas*ible*, not feas*able*.
 
 
-### Strikeout ###
+#### Strikeout ###
 
 *Docverter extension*.
 
@@ -1307,7 +1287,7 @@ with `~~`. Thus, for example,
     This ~~is deleted text.~~
 
 
-### Superscripts and subscripts ###
+#### Superscripts and subscripts ###
 
 *Docverter extension*.
 
@@ -1324,7 +1304,7 @@ Thus, if you want the letter P with 'a cat' in subscripts, use
 `P~a\ cat~`, not `P~a cat~`.
 
 
-### Verbatim ###
+#### Verbatim ###
 
 To make a short span of text verbatim, put it inside backticks:
 
@@ -1353,8 +1333,7 @@ Attributes can be attached to verbatim text, just as with
     `<$>`{.haskell}
 
 
-Raw HTML
---------
+### Raw HTML
 
 Markdown allows you to insert raw HTML (or DocBook) anywhere in a document
 (except verbatim contexts, where `<`, `>`, and `&` are interpreted
@@ -1402,12 +1381,11 @@ markdown with HTML block elements.  For example, one can surround
 a block of markdown text with `<div>` tags without preventing it
 from being interpreted as markdown.
 
-Links
------
+### Links
 
 Markdown allows links to be specified in several ways.
 
-### Automatic links ###
+#### Automatic links ###
 
 If you enclose a URL or email address in pointy brackets, it
 will become a link:
@@ -1416,7 +1394,7 @@ will become a link:
     <sam@green.eggs.ham>
 
 
-### Inline links ###
+#### Inline links ###
 
 An inline link consists of the link text in square brackets,
 followed by the URL in parentheses. (Optionally, the URL can
@@ -1429,7 +1407,7 @@ There can be no space between the bracketed part and the parenthesized part.
 The link text can contain formatting (such as emphasis), but the title cannot.
 
 
-### Reference links ###
+#### Reference links ###
 
 An *explicit* reference link has two parts, the link itself and the link
 definition, which may occur elsewhere in the document (either
@@ -1471,7 +1449,7 @@ empty, or omitted entirely:
 
     [my website]: http://foo.bar.baz
 
-### Internal links
+#### Internal links
 
 To link to another section of the same document, use the automatically
 generated identifier (see [Header identifiers in HTML, LaTeX, and
@@ -1489,8 +1467,7 @@ or
 Internal links are currently supported for HTML formats (including
 HTML slide shows and EPUB), LaTeX, and ConTeXt.
 
-Images
-------
+### Images
 
 A link immediately preceded by a `!` will be treated as an image.
 The link text will be used as the image's alt text:
@@ -1501,7 +1478,7 @@ The link text will be used as the image's alt text:
 
     [movie reel]: movie.gif
 
-### Pictures with captions ###
+#### Pictures with captions ###
 
 *Docverter extension*.
 
@@ -1520,8 +1497,7 @@ nonbreaking space after the image:
     ![This image won't be a figure](/url/of/image.png)\ 
 
 
-Footnotes
----------
+### Footnotes
 
 *Docverter extension*.
 
@@ -1563,16 +1539,14 @@ they cannot contain multiple paragraphs).  The syntax is as follows:
 
 Inline and regular footnotes may be mixed freely.
 
-PDF Styling
-===========
+## PDF Styling
 
 Docverter PDF conversion supports all of CSS 2.1 and some of CSS 3, including
 `@font-face` and paged media. Docverter uses Flying Saucer to render HTML
 to PDF. See the [user's guide](http://flyingsaucerproject.github.com/flyingsaucer/r8/guide/users-guide-R8.html)
 for extensive details. Here are a few useful things.
 
-Fonts
------
+### Fonts
 
 Use a `@font-face` delcaration to include fonts in your stylesheet. Any fonts should be
 included in `other_files[]` as truetype font files. For example:
@@ -1591,8 +1565,7 @@ included in `other_files[]` as truetype font files. For example:
 
 **VERY IMPORTANT NOTE** You *must* include the `-fs-pdf-font-embed` and `-fs-pdf-font-encoding` attributes, and they must be the exact values as above. In addition, the font-family *must* be identical to the font family that is encoded in the font file itself.
 
-Page Attributes
----------------
+### Page Attributes
 
 See the W3C's [Paged Media](http://www.w3.org/TR/css3-page/) for details. A small example:
 
@@ -1601,8 +1574,7 @@ See the W3C's [Paged Media](http://www.w3.org/TR/css3-page/) for details. A smal
       margin: 27mm;
     }
 
-Headers and Footers
--------------------
+### Headers and Footers
 
 See the W3C's [Paged Media](http://www.w3.org/TR/css3-page/) for details. A small example:
 
@@ -1627,8 +1599,7 @@ of each page.
 Docverter supports both margin boxes, described above, and running elements as defined by the CSS3 spec.
 
 
-Authors
-=======
+## Authors
 
 This is a copy of the Pandoc README file, modified to suit Docverter's manifest format.
 
