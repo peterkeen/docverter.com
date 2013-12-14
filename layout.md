@@ -12,8 +12,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="shortcut icon" type="image/png" href="/favicon.png" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="shortcut icon" type="image/png" href="<%= static_path '/favicon.png' %>" />
+    <link rel="icon" type="image/png" href="<%= static_path '/favicon.png' %>" />
 
     <script src="<%= static_path '/highlight.pack.js' %>" type="text/javascript"></script>
     <link rel="stylesheet" href="<%= static_path '/github.css' %>">
