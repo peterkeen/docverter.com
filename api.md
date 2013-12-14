@@ -672,12 +672,4 @@ row of tildes or backticks at the start and end:
     ~~~~~~~~~~
     ~~~~~~~~~~~~~~~~
 
-Optionally, you may attach attributes to the code block using
-this syntax:
-
-    ~~~~ {#mycode .haskell .numberLines startFrom="100"}
-    qsort []     = []
-    qsort (x:xs) = qsort (filter (< x) xs) ++ [x] ++
-                   qsort (filter (>= x) xs)
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
