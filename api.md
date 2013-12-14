@@ -33,3 +33,32 @@ You can also use [httpie](https://github.com/jkbr/httpie), another `curl`-like c
 The `examples` directory contains several examples showing off various API options.
 
 *Note: At this time `wget` does not support `multipart/form-data` and so cannot be used to talk to Docverter*
+
+Full Option Reference
+=====================
+
+General options
+---------------
+
+**`input_files[]`** *ATTACHMENT*
+
+A single input file. This can be specified multiple times. The value should be a `multipart/form-data` file upload.
+
+**`other_files[]`** *ATTACHMENT*
+
+A single additional file. This can be speicifed multiple times. The value should be a `multipart/form-data` file upload.
+
+**`from`**
+
+Specify input format.  *FORMAT* can be `markdown` (markdown),
+`textile` (Textile), `rst` (reStructuredText), `html` (HTML),
+`docbook` (DocBook XML), or `latex` (LaTeX).
+
+**`to`**
+
+Specify output format.  *FORMAT* can be `markdown` (markdown), `rst` (reStructuredText), `html` (XHTML 1),
+`latex` (LaTeX), `context` (ConTeXt), `mediawiki` (MediaWiki markup),
+`textile` (Textile), `org` (Emacs Org-Mode), `texinfo` (GNU Texinfo),
+`docbook` (DocBook XML), `docx` (Word docx), `epub` (EPUB book),
+`mobi` (Kindle book), `asciidoc` (AsciiDoc),  or `rtf` (rich text format).
+
