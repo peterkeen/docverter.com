@@ -35,10 +35,10 @@
 </div>
 <div class="row">
   <div class="span4">
-    <div class="button"><a class="btn" href="/api.html">API Documentation &raquo;</a></div>
+    <div class="button"><a class="btn" href="/api">API Documentation &raquo;</a></div>
   </div>
   <div class="span4">
-    <div class="button"><a class="btn" href="/learn.html">Frequently Asked Questions &raquo;</a></div>
+    <div class="button"><a class="btn" href="/learn">Frequently Asked Questions &raquo;</a></div>
   </div>
   <div class="span4">
     <div class="button">

@@ -1,3 +1,11 @@
+<div class="hero-unit hero-small">
+  <h1>Docverter</h1>
+  <p>Use Docverter's REST API to convert your documents, lickety split.</p>
+  <p>
+    <a class="btn btn-large btn-success" href="https://github.com/docverter/docverter">Get the source &raquo;</a>
+  </p>
+</div>
+
 # API Reference
 
 [[_TOC_]]
