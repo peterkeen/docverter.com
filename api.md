@@ -34,11 +34,9 @@ The `examples` directory contains several examples showing off various API optio
 
 *Note: At this time `wget` does not support `multipart/form-data` and so cannot be used to talk to Docverter*
 
-Full Option Reference
-=====================
+## Full Option Reference
 
-General options
----------------
+### General options
 
 **`input_files[]`** *ATTACHMENT*
 
