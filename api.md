@@ -325,3 +325,133 @@ will need to add declarations like the following to your CSS (see
     body { font-family: "DejaVuSans"; }
 
 This file must be included using `other_files[]`.
+
+
+## Templates
+
+Docverter  uses a template to
+add header and footer material that is needed for a self-standing
+document.  A custom template
+can be specified using the `template` option.
+
+Templates may contain *variables*.  Variable names are sequences of
+alphanumerics, `-`, and `_`, starting with a letter.  A variable name
+surrounded by `$` signs will be replaced by its value.  For example,
+the string `$title$` in
+
+    <title>$title$</title>
+
+will be replaced by the document title.
+
+To write a literal `$` in a template, use `$$`.
+
+Some variables are set automatically by docverter.  These vary somewhat
+depending on the output format, but include:
+
+**`header-includes`**
+
+contents specified by `include_in_header` (may have multiple
+values)
+
+**`toc`**
+
+non-null value if `table_of_contents` was specified
+
+**`include-before`**
+
+contents specified by `include_before_body` (may have
+multiple values)
+
+**`include-after`**
+
+contents specified by `include_after_body` (may have
+multiple values)
+
+**`body`**
+
+body of document
+
+**`title`**
+
+title of document, as specified in title block
+
+**`author`**
+
+author of document, as specified in title block (may have
+multiple values)
+
+**`date`**
+
+date of document, as specified in title block
+
+**`lang`**
+
+language code for HTML or LaTeX documents
+
+**`fontsize`**
+
+font size (10pt, 11pt, 12pt) for LaTeX documents
+
+**`documentclass`**
+
+document class for LaTeX documents
+
+**`geometry`**
+
+options for LaTeX `geometry` class, e.g. `margin=1in`;
+may be repeated for multiple options
+
+**`mainfont`**, **`sansfont`**, **`monofont`**, **`mathfont`**
+
+fonts for LaTeX documents (works only with xelatex
+and lualatex)
+
+**`linkcolor`**
+
+color for internal links in LaTeX documents (`red`, `green`,
+`magenta`, `cyan`, `blue`, `black`)
+
+**`urlcolor`**
+
+color for external links in LaTeX documents
+
+**`links-as-notes`**
+
+causes links to be printed as footnotes in LaTeX documents
+
+Variables may be set in the manifest using the `variable`
+option. This allows users to include custom variables in their
+templates.
+
+Templates may contain conditionals.  The syntax is as follows:
+
+    $if(variable)$
+    X
+    $else$
+    Y
+    $endif$
+
+This will include `X` in the template if `variable` has a non-null
+value; otherwise it will include `Y`. `X` and `Y` are placeholders for
+any valid template text, and may include interpolated variables or other
+conditionals. The `$else$` section may be omitted.
+
+When variables can have multiple values (for example, `author` in
+a multi-author document), you can use the `$for$` keyword:
+
+    $for(author)$
+    <meta name="author" content="$author$" />
+    $endfor$
+
+You can optionally specify a separator to be used between
+consecutive items:
+
+    $for(author)$$author$$sep$, $endfor$
+
+If you use custom templates, you may need to revise them as pandoc
+changes.  We recommend tracking the changes in the default templates,
+and modifying your custom templates accordingly. An easy way to do this
+is to fork the pandoc-templates repository
+(<http://github.com/jgm/pandoc-templates>) and merge in changes after each
+pandoc release.
+
