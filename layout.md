@@ -2,7 +2,7 @@
 <html lang=en>
   <head>
     <meta charset="utf-8">
-    <title><%= @page.title == 'Home' ? "" :' @page.title + " :: " %>Docverter</title>
+    <title><%= @page.title == 'Home' ? "" : @page.title + " :: " %>Docverter</title>
     <link href="/bootstrap.min.css" rel="stylesheet">
     <link href="/main.css" rel="stylesheet">
     <!--[if lt IE 9]>
