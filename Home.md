@@ -13,7 +13,7 @@
 <code><pre>curl http://c.docverter.com/convert \
   -F from=html \
   -F to=pdf \
-  -F input_files[]=@<(echo hi there)
+  -F input_files[]=@%lt(echo hi there)
 </code></pre>
     </p>
   </div>
