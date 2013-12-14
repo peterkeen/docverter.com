@@ -170,3 +170,158 @@ document in standalone mode. This is generally only useful when the
 docverter automatically sets the variables used in the default
 templates.  If no *VAL* is specified, the key will be given the
 value `true`.
+
+
+### Options affecting specific writers
+
+**`ascii`**
+
+Use only ascii characters in output.  Currently supported only
+for HTML output (which uses numerical entities instead of
+UTF-8 when this option is selected).
+
+**`reference_links`**
+
+Use reference-style links, rather than inline links, in writing markdown
+or reStructuredText.  By default inline links are used.
+
+**`atx_headers`**
+
+Use ATX style headers in markdown output. The default is to use
+setext-style headers for levels 1-2, and then ATX headers.
+
+**`chapters`**
+
+Treat top-level headers as chapters in LaTeX, ConTeXt, and DocBook
+output.  When the LaTeX template uses the report, book, or
+memoir class, this option is implied.
+
+**`number_sections`**
+
+Number section headings in LaTeX, ConTeXt, or HTML output.
+By default, sections are not numbered.
+
+**`no_tex_ligatures`**
+
+Do not convert quotation marks, apostrophes, and dashes to
+the TeX ligatures when writing LaTeX or ConTeXt. Instead, just
+use literal unicode characters. This is needed for using advanced
+OpenType features with XeLaTeX and LuaLaTeX. Note: normally
+`smart` is selected automatically for LaTeX and ConTeXt
+output, but it must be specified explicitly if `no_tex_ligatures`
+is selected. If you use literal curly quotes, dashes, and ellipses
+in your source, then you may want to use `no_tex_ligatures`
+without `smart`.
+
+**`listings`**
+
+Use listings package for LaTeX code blocks
+
+**`section_divs`**
+
+Wrap sections in `<div>` tags (or `<section>` tags in HTML5),
+and attach identifiers to the enclosing `<div>` (or `<section>`)
+rather than the header itself.
+See [Section identifiers](#header-identifiers-in-html-latex-and-context), below.
+
+**`email_obfuscation`** *none|javascript|references*
+
+Specify a method for obfuscating `mailto:` links in HTML documents.
+*none* leaves `mailto:` links as they are.  *javascript* obfuscates
+them using javascript. *references* obfuscates them by printing their
+letters as decimal or hexadecimal character references.
+If `strict` is specified, *references* is used regardless of the
+presence of this option.
+
+**`id_prefix`** *STRING*
+
+Specify a prefix to be added to all automatically generated identifiers
+in HTML output.  This is useful for preventing duplicate identifiers
+when generating fragments to be included in other pages.
+
+**`title_prefix`** *STRING*
+
+Specify *STRING* as a prefix at the beginning of the title
+that appears in the HTML header (but not in the title as it
+appears at the beginning of the HTML body).
+
+**`css=`** *URL*
+
+Link to a CSS style sheet.
+
+**`reference_docx`** *FILE*
+
+Use the specified file as a style reference in producing a docx file.
+For best results, the reference docx should be a modified version
+of a docx file produced using docverter.  The contents of the reference docx
+are ignored, but its stylesheets are used in the new docx.  This file must be included using `other_files[]`.
+
+**`pdf_username`** *STRING*
+
+Encrypt the output PDF with the given username.
+
+**`pdf_password`** *STRING*
+
+Encrypt the output PDF with the given password.
+
+**`epub_stylesheet`** *FILE*
+
+Use the specified CSS file to style the EPUB.  This file must be included using `other_files[]`.
+
+**`epub_cover_image`** *FILE*
+
+Use the specified image as the EPUB cover.  It is recommended
+that the image be less than 1000px in width and height.  This file must be included using `other_files[]`.
+
+**`epub_metadata`** *FILE*
+
+Look in the specified XML file for metadata for the EPUB.
+The file should contain a series of Dublin Core elements,
+as documented at <http://dublincore.org/documents/dces/>.
+For example:
+
+     <dc:rights>Creative Commons</dc:rights>
+     <dc:language>es-AR</dc:language>
+
+By default, docverter will include the following metadata elements:
+`<dc:title>` (from the document title), `<dc:creator>` (from the
+document authors), `<dc:date>` (from the document date, which should
+be in [ISO 8601 format]), `<dc:language>` (from the `lang`
+variable, or, if is not set, the locale), and `<dc:identifier
+id="BookId">` (a randomly generated UUID). Any of these may be
+overridden by elements in the metadata file.  This file must be included using `other_files[]`.
+
+**`epub_embed_font`** *FILE*
+
+Embed the specified font in the EPUB. This option can be an
+array to embed multiple fonts.  To use embedded fonts, you
+will need to add declarations like the following to your CSS (see
+`epub_stylesheet`):
+
+    @font-face {
+    font-family: DejaVuSans;
+    font-style: normal;
+    font-weight: normal;
+    src:url("DejaVuSans-Regular.ttf");
+    }
+    @font-face {
+    font-family: DejaVuSans;
+    font-style: normal;
+    font-weight: bold;
+    src:url("DejaVuSans-Bold.ttf");
+    }
+    @font-face {
+    font-family: DejaVuSans;
+    font-style: italic;
+    font-weight: normal;
+    src:url("DejaVuSans-Oblique.ttf");
+    }
+    @font-face {
+    font-family: DejaVuSans;
+    font-style: italic;
+    font-weight: bold;
+    src:url("DejaVuSans-BoldOblique.ttf");
+    }
+    body { font-family: "DejaVuSans"; }
+
+This file must be included using `other_files[]`.
