@@ -1,3 +1,5 @@
+<!-- --- title: Convert Plain-text Documents to PDF, Docx, and ePub with Docverter -->
+
 <div class="hero-unit">
   <h1>Docverter</h1>
   <p>Convert plain text documents written in HTML, Markdown, or LaTeX to PDF, Docx, RTF or ePub with a simple HTTP API.</p>
