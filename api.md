@@ -1,4 +1,4 @@
-# API
+# API Reference
 
 [[_TOC_]]
 
