@@ -644,6 +644,8 @@ of the verbatim text, and is removed in the output.
 
 Note: blank lines in the verbatim text need not begin with four spaces.
 
+#### Delimited code blocks ###
+
 *Docverter extension*.
 
 In addition to standard indented code blocks, Docverter supports
@@ -657,4 +659,25 @@ between these lines is treated as code. No indentation is necessary:
       moveShip(5 * gravity, DOWN);
     }
     ~~~~~~~
+
+Like regular code blocks, delimited code blocks must be separated
+from surrounding text by blank lines.
+
+If the code itself contains a row of tildes or backticks, just use a longer
+row of tildes or backticks at the start and end:
+
+    ~~~~~~~~~~~~~~~~
+    ~~~~~~~~~~
+    code including tildes
+    ~~~~~~~~~~
+    ~~~~~~~~~~~~~~~~
+
+Optionally, you may attach attributes to the code block using
+this syntax:
+
+    ~~~~ {#mycode .haskell .numberLines startFrom="100"}
+    qsort []     = []
+    qsort (x:xs) = qsort (filter (< x) xs) ++ [x] ++
+                   qsort (filter (>= x) xs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
