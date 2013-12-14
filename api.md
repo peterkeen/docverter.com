@@ -585,3 +585,130 @@ and the identifier will be attached to the enclosing `<div>`
 (or `<section>`) tag rather than the header itself. This allows entire
 sections to be manipulated using javascript or treated differently in
 CSS.
+
+### Block quotations
+
+Markdown uses email conventions for quoting blocks of text.
+A block quotation is one or more paragraphs or other block elements
+(such as lists or headers), with each line preceded by a `>` character
+and a space. (The `>` need not start at the left margin, but it should
+not be indented more than three spaces.)
+
+    > This is a block quote. This
+    > paragraph has two lines.
+    >
+    > 1. This is a list inside a block quote.
+    > 2. Second item.
+
+A "lazy" form, which requires the `>` character only on the first
+line of each block, is also allowed:
+
+    > This is a block quote. This
+    paragraph has two lines.
+
+    > 1. This is a list inside a block quote.
+    2. Second item.
+
+Among the block elements that can be contained in a block quote are
+other block quotes. That is, block quotes can be nested:
+
+    > This is a block quote.
+    >
+    > > A block quote within a block quote.
+
+Standard markdown syntax does not require a blank line before a block
+quote.  Docverter does require this (except, of course, at the beginning of the
+document). The reason for the requirement is that it is all too easy for a
+`>` to end up at the beginning of a line by accident (perhaps through line
+wrapping). So, unless `--strict` is used, the following does not produce
+a nested block quote in docverter:
+
+    > This is a block quote.
+    >> Nested.
+
+
+### Verbatim (code) blocks
+
+#### Indented code blocks ###
+
+A block of text indented four spaces (or one tab) is treated as verbatim
+text: that is, special characters do not trigger special formatting,
+and all spaces and line breaks are preserved.  For example,
+
+        if (a > 3) {
+          moveShip(5 * gravity, DOWN);
+        }
+
+The initial (four space or one tab) indentation is not considered part
+of the verbatim text, and is removed in the output.
+
+Note: blank lines in the verbatim text need not begin with four spaces.
+
+
+#### Delimited code blocks ###
+
+*Docverter extension*.
+
+In addition to standard indented code blocks, Docverter supports
+*delimited* code blocks.  These begin with a row of three or more
+tildes (`~`) or backticks (`` ` ``) and end with a row of tildes or
+backticks that must be at least as long as the starting row. Everything
+between these lines is treated as code. No indentation is necessary:
+
+    ~~~~~~~
+    if (a > 3) {
+      moveShip(5 * gravity, DOWN);
+    }
+    ~~~~~~~
+
+Like regular code blocks, delimited code blocks must be separated
+from surrounding text by blank lines.
+
+If the code itself contains a row of tildes or backticks, just use a longer
+row of tildes or backticks at the start and end:
+
+    ~~~~~~~~~~~~~~~~
+    ~~~~~~~~~~
+    code including tildes
+    ~~~~~~~~~~
+    ~~~~~~~~~~~~~~~~
+
+Optionally, you may attach attributes to the code block using
+this syntax:
+
+    ~~~~ {#mycode .haskell .numberLines startFrom="100"}
+    qsort []     = []
+    qsort (x:xs) = qsort (filter (< x) xs) ++ [x] ++
+                   qsort (filter (>= x) xs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Here `mycode` is an identifier, `haskell` and `numberLines` are classes, and
+`startFrom` is an attribute with value `100`. Some output formats can use this
+information to do syntax highlighting. Currently, the only output formats
+that uses this information are HTML and LaTeX. If highlighting is supported
+for your output format and language, then the code block above will appear
+highlighted, with numbered lines. (To see which languages are supported, do
+`docverter --version`.) Otherwise, the code block above will appear as follows:
+
+    <pre id="mycode" class="haskell numberLines" startFrom="100">
+      <code>
+      ...
+      </code>
+    </pre>
+
+A shortcut form can also be used for specifying the language of
+the code block:
+
+    ```haskell
+    qsort [] = []
+    ```
+
+This is equivalent to:
+
+    ``` {.haskell}
+    qsort [] = []
+    ```
+
+To prevent all highlighting, use the `--no-highlight` flag.
+To set the highlighting style, use `--highlight-style`.
+
